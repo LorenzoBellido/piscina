@@ -1,0 +1,60 @@
+Clase GestionAbonados
+ static listaAbonados: ArrayList<Abonado>
+ 
+ + addAbonado(Abonado a): boolean
+ + listAbonado()
+ + buscarAbonado(Abonado a)
+ + deleteAbonado(Abonado a): boolean
+ + modAbonado(Abonado a): boolean
+ + save():arrayList<Abonado>
+
+Clase Abonado
+ - nombreCompleto: String
+ - duracionBono: Enum
+ - tipoBono: Enum
+ - bonoVigente: Boolean
+ - fecha: String
+ - precio: double
+
+==========================
+ + Abonado(nombreCompleto)
+ + Abonado(nombreCompleto, tipoBono, fecha)
+ + Abonado(nombreCompleto, tipoBono, bonoVigente, fecha)
+==========================
+
+getters y setters
+
+ + precioBono(String tipoBono)
+ + precioTotal(): Double
+ 
+ 
+ Clase Ciente
+ - tipoEntrada: Enum
+ - cantidad: int
+ - fecha: String
+ - precio: Double
+ 
+ =========================
+ + Cliente(tipoEntrada, cantidad, fecha)
+ =========================
+ 
+ getters y setters
+ 
+ + precioEntrada()
+ + precioTotal(): Double
+ 
+
+ Clase Fichero
+- static final RUTA: String
+- static BufferedReader br No Hace Falta
+- static BufferedWriter bw No Hace Falta
++ static leer(): TreeSet<Paciente>
++ static escribir(TreeSet<Paciente>)
+
+Clase tipoBono
++toString(): String
++getMessage(): String
+
+Clase tipoEntrada
++toString(): String
++getMessage(): String
