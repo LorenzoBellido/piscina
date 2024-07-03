@@ -7,8 +7,12 @@ import java.time.format.TextStyle;
 import java.util.Calendar;
 import java.util.Locale;
 
+import principal.Abonado;
+
 public class proba{
   public static void main(String[] args) {
+	  
+	  clases.Abonado a = new clases.Abonado(null)
 	  
 	  Calendar c = Calendar.getInstance();
 		String dia = Integer.toString(c.get(Calendar.DATE));

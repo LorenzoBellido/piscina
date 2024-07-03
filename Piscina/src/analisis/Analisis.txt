@@ -15,11 +15,12 @@ Clase Abonado
  - bonoVigente: Boolean
  - fecha: String
  - precio: double
+ - pagoTaquilla: double
 
 ==========================
  + Abonado(nombreCompleto)
- + Abonado(nombreCompleto, tipoBono, fecha)
- + Abonado(nombreCompleto, tipoBono, bonoVigente, fecha)
+ + Abonado(nombreCompleto, tipoBono,duracionBono, fecha)
+ + Abonado(nombreCompleto, tipoBono, bonoVigente,duracionBono, fecha)
 ==========================
 
 getters y setters
