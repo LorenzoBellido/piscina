@@ -1,5 +1,7 @@
 package clases;
 
+import java.util.Objects;
+
 import excepciones.TipoBonoException;
 
 public class Abonado {
@@ -16,7 +18,7 @@ public class Abonado {
 	private duracionBono duracion;
 	private tipoBono tipo; 
 	private boolean bonoVigente = true;
-	private String fecha = "";
+	private String fecha;
 	private double precio;
 	private double pagoTaquilla = 0;
 	
@@ -26,6 +28,11 @@ public class Abonado {
 			this.nombreCompleto = nombreCompleto;			
 		}
 	}
+	
+	public Abonado(String nombreCompleto, String fecha) {
+		this(nombreCompleto);
+		comprobarFecha(fecha);
+		}
 
 
 	public Abonado(String nombreCompleto, String duracion, String tipo, boolean bonoVigente, String fecha,
@@ -34,9 +41,71 @@ public class Abonado {
 		comprobarDuracion(duracion);
 		comprobarTipo(tipo);
 		this.bonoVigente = bonoVigente;
-		this.fecha = fecha;
+		if(comprobarFecha(fecha)) {
+			this.fecha = fecha;
+		}
 		this.precio = precio;
 		this.pagoTaquilla = pagoTaquilla;
+	}
+	
+	
+
+	public String getNombreCompleto() {
+		return nombreCompleto;
+	}
+
+
+	public duracionBono getDuracion() {
+		return duracion;
+	}
+
+
+	public tipoBono getTipo() {
+		return tipo;
+	}
+
+
+	public boolean isBonoVigente() {
+		return bonoVigente;
+	}
+
+
+	public String getFecha() {
+		return fecha;
+	}
+
+
+	public double getPrecio() {
+		return precio;
+	}
+
+
+	public double getPagoTaquilla() {
+		return pagoTaquilla;
+	}
+
+	
+	public boolean comprobarFecha(String fecha) {
+		boolean correcto = false;
+		String guardar[] = null;
+		guardar = fecha.split("/");
+		int dia = Integer.parseInt(guardar[0]);
+		int mes = Integer.parseInt(guardar[1]);
+		int anio = Integer.parseInt(guardar[2]);
+
+		if (dia > 0 && dia < 31) {
+			correcto = true;
+		}
+
+		if (mes > 0 && mes < 13) {
+			correcto = true;
+		}
+
+		if (anio > 0) {
+			correcto = true;
+		}
+
+		return correcto;
 	}
 
 	private void comprobarTipo(String tipoB) {
@@ -59,10 +128,23 @@ public class Abonado {
 
 
 	@Override
+	public boolean equals(Object obj) {
+		boolean res = false;
+		Abonado a = (Abonado) obj;
+		if(this.nombreCompleto.equals(a.nombreCompleto)) {
+			if(this.fecha.equals(a.fecha)) {
+				res = true;
+			}
+		}
+		return res;
+	}
+
+
+	@Override
 	public String toString() {
-		return "Abonado [nombreCompleto=" + nombreCompleto + ", duracion=" + duracion + ", tipo=" + tipo
-				+ ", bonoVigente=" + bonoVigente + ", fecha=" + fecha + ", precio=" + precio + ", pagoTaquilla="
-				+ pagoTaquilla + "]";
+		String res = "";
+		res += "Nombre: " + nombreCompleto + "\n" +  "Duración: " + duracion + "\n" +  "Tipo: " + tipo + "\n" +  "Vigente: " + (bonoVigente? "Si" : "No") + "\n" +  "Fecha: " + fecha + "\n" + "Precio: " + precio + "\n" + "Pago en Taquilla: " + pagoTaquilla + "\n";
+		return res;
 	}
 	
 	
